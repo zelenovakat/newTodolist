@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-const AddTodo = (props) => {
+const AddTodo = ({ addTodo }) => {
   const [content, setContent] = useState("")
-  const addTodo = props
+
   const handleChange = (e) => {
     setContent(e.target.value)
   }
@@ -10,8 +10,22 @@ const AddTodo = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     addTodo(content)
-    console.log(content)
+    setContent({ content: "" })
   }
+  //   console.log(content)
+
+  // setContent(addTodo({ content: "" }))
+
+  //   props.addTodo(content)
+  //   setContent({
+  //     content: "",
+  //   })
+
+  // submit = (e) => {
+  //   e.preventDefault()
+  //   this.props.addTodo(this.state.input)
+  //   this.setState({ input: "" })
+  // }
 
   return (
     <div>
