@@ -1,12 +1,16 @@
 import React, { useState } from "react"
 
-const AddTodo = () => {
+const AddTodo = (props) => {
   const [content, setContent] = useState("")
-  const handleSubmit = (data) => {
-    setContent(data)
+  const addTodo = props
+  const handleChange = (e) => {
+    setContent(e.target.value)
   }
-  const handleChange = (data) => {
-    console.log(data)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addTodo(content)
+    console.log(content)
   }
 
   return (

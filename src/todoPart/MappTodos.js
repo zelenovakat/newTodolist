@@ -1,13 +1,12 @@
 import React from "react"
-import { defaultTodos } from "./DefaultTodos"
 import styled from "styled-components"
 import Checkbox from "@material-ui/core/Checkbox"
 
-const Todos = () => {
-  const mappedList = defaultTodos.map((todo) => {
+const MappTodos = ({ todos, toggleStatus }) => {
+  const mappedList = todos.map((todo) => {
     return (
       <MainDiv key={todo.id}>
-        <OneTodo key={todo.id}>
+        <OneTodo className={`todo-finished-${todo.status}`} onClick={() => toggleStatus(todo.id)}>
           <Checkbox
             checked={todo.status === "true"}
             value="status"
@@ -25,7 +24,7 @@ const Todos = () => {
   return <div>{mappedList}</div>
 }
 
-export default Todos
+export default MappTodos
 
 const OneTodo = styled.div``
 const MainDiv = styled.div``
