@@ -2,10 +2,10 @@ import React from "react"
 import TopPart from "../src/header/TopPart"
 import styled from "styled-components"
 import MappTodos from "../src/todoPart/MappTodos"
-// import ButtonAddTodo from "./todoPart/ButtonAddTodo"
 import { useLocalStorage } from "../src/helper/useLocalStorage"
 import { updateObjectInArrayById } from "../src/helper/updateObjectInArrayById"
 import AddTodo from "../src/todoPart/AddTodo"
+
 const defaultTodos = [
   { id: 1, content: "morning walk", status: "true" },
   { id: 2, content: "meeting with John", status: "false" },
@@ -46,4 +46,7 @@ export default App
 const MainWrapper = styled.div`
   background-color: #fef8ec;
 `
-const TodoPart = styled.div``
+const TodoPart = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
