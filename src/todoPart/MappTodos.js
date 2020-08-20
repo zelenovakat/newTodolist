@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Checkbox from "@material-ui/core/Checkbox"
+import MenuButton from "../todoPart/MenuButton"
 
 const MappTodos = ({ todos, toggleStatus }) => {
   const mappedList = todos.map((todo) => {
@@ -20,6 +21,7 @@ const MappTodos = ({ todos, toggleStatus }) => {
           />
           <span>{todo.content}</span>
         </OneTodo>
+        <MenuButton />
       </MainDiv>
     )
   })
@@ -30,15 +32,15 @@ const MappTodos = ({ todos, toggleStatus }) => {
 export default MappTodos
 
 const OneTodo = styled.div`
-  border: 2px solid #818cc3;
-  margin: 10px 20px;
-  border-radius: 10px;
-  background-color: #fefaf2;
   svg {
     color: #4355a9;
   }
 `
 const MainDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #818cc3;
+  margin: 10px 20px;
+  border-radius: 10px;
+  background-color: #fefaf2;
 `

@@ -29,6 +29,12 @@ const App = () => {
     setTodos(updateObjectInArrayById(todos, selectedTodo))
   }
 
+  // const deleteTodo = (todoId) => {
+  //   console.log(todoId)
+  //   const todosWithoutOne = todos.filter((todo) => todo.id !== todoId)
+  //   setTodos(todosWithoutOne)
+  // }
+
   return (
     <MainWrapper>
       <header>
