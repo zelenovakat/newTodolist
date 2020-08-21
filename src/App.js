@@ -16,30 +16,27 @@ const App = () => {
   const [todos, setTodos] = useLocalStorage("todos", defaultTodos)
 
   const addTodo = (todo) => {
-    console.log(todo)
     todo.id = Math.random()
     const updatedTodos = [...todos, todo]
     setTodos(updatedTodos)
   }
 
   const toggleStatus = (id) => {
-    console.log(id)
     const selectedTodo = todos.find((todo) => todo.id === id)
     selectedTodo.status = selectedTodo.status === "true" ? "false" : "true"
     setTodos(updateObjectInArrayById(todos, selectedTodo))
   }
 
-  // const deleteTodo = (todoId) => {
-  //   console.log(todoId)
-  //   const todosWithoutOne = todos.filter((todo) => todo.id !== todoId)
-  //   setTodos(todosWithoutOne)
-  // }
+  const removeTodo = (todoId) => {
+    const todosWithoutOne = todos.filter((todo) => todo.id !== todoId)
+    setTodos(todosWithoutOne)
+  }
 
   return (
     <MainWrapper>
       <header>
         <TopPart />
-        <MappTodos todos={todos} toggleStatus={toggleStatus} />
+        <MappTodos todos={todos} removeTodo={removeTodo} toggleStatus={toggleStatus} />
       </header>
       <TodoPart>
         <AddTodo addTodo={addTodo} />

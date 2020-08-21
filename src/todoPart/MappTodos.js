@@ -1,9 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Checkbox from "@material-ui/core/Checkbox"
-import MenuButton from "../todoPart/MenuButton"
+import IconButton from "@material-ui/core/IconButton"
 
-const MappTodos = ({ todos, toggleStatus }) => {
+import MoreVertIcon from "@material-ui/icons/MoreVert"
+
+const MappTodos = ({ todos, toggleStatus, removeTodo }) => {
+  const [isMenuShown, setMenuShown] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuShown(!isMenuShown)
+  }
+
   const mappedList = todos.map((todo) => {
     return (
       <MainDiv key={todo.id}>
@@ -21,7 +29,17 @@ const MappTodos = ({ todos, toggleStatus }) => {
           />
           <span>{todo.content}</span>
         </OneTodo>
-        <MenuButton />
+        <div>
+          <IconButton onClick={toggleMenu}>
+            <MoreVertIcon />
+          </IconButton>
+          {isMenuShown && (
+            <Menu>
+              <button>edit</button>
+              <button onClick={() => removeTodo(todo.id)}>remove</button>
+            </Menu>
+          )}
+        </div>
       </MainDiv>
     )
   })
@@ -44,3 +62,4 @@ const MainDiv = styled.div`
   border-radius: 10px;
   background-color: #fefaf2;
 `
+const Menu = styled.div``
