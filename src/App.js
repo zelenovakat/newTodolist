@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import TopPart from "../src/header/TopPart"
 import styled from "styled-components"
 import MappTodos from "../src/todoPart/MappTodos"
@@ -14,6 +14,8 @@ const defaultTodos = [
 
 const App = () => {
   const [todos, setTodos] = useLocalStorage("todos", defaultTodos)
+
+  const [openedMenuId, setOpenedMenuId] = useState(false)
 
   const addTodo = (todo) => {
     todo.id = Math.random()
@@ -32,11 +34,24 @@ const App = () => {
     setTodos(todosWithoutOne)
   }
 
+  const toggleMenu = (id) => {
+    setOpenedMenuId(id)
+    if (openedMenuId === id) {
+      setOpenedMenuId("")
+    }
+  }
+
   return (
     <MainWrapper>
       <header>
         <TopPart />
-        <MappTodos todos={todos} removeTodo={removeTodo} toggleStatus={toggleStatus} />
+        <MappTodos
+          todos={todos}
+          openedMenuId={openedMenuId}
+          removeTodo={removeTodo}
+          toggleStatus={toggleStatus}
+          toggleMenu={toggleMenu}
+        />
       </header>
       <TodoPart>
         <AddTodo addTodo={addTodo} />
