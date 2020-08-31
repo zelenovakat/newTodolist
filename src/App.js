@@ -14,8 +14,20 @@ const defaultTodos = [
 
 const App = () => {
   const [todos, setTodos] = useLocalStorage("todos", defaultTodos)
-
   const [openedMenuId, setOpenedMenuId] = useState(false)
+  // const [precentage, setPrecentage] = useState()
+
+  // const changePrecentage = () => {
+  //   setPrecentage(changePrecentage(precentage + 10))
+  // }
+
+  const updateTodo = (newValue, todo) => {
+    // todo.content = newValue
+    const updatedTodo = { ...todo, content: newValue }
+    setTodos(updateObjectInArrayById(todos, updatedTodo))
+    console.log("new vlue", newValue)
+    console.log("old todo", todo)
+  }
 
   const addTodo = (todo) => {
     todo.id = Math.random()
@@ -45,12 +57,22 @@ const App = () => {
     <MainWrapper>
       <header>
         <TopPart />
+        {/* <ProgressLine>
+          <TrakcerLine precentage={precentage}></TrakcerLine>
+          <button
+            onClick={() => {
+              changePrecentage
+            }}>
+            next
+          </button>
+        </ProgressLine> */}
         <MappTodos
           todos={todos}
           openedMenuId={openedMenuId}
           removeTodo={removeTodo}
           toggleStatus={toggleStatus}
           toggleMenu={toggleMenu}
+          updateTodo={updateTodo}
         />
       </header>
       <TodoPart>
@@ -67,4 +89,13 @@ const MainWrapper = styled.div`
 const TodoPart = styled.div`
   display: flex;
   justify-content: flex-end;
+`
+const ProgressLine = styled.div`
+  height: 10px;
+  margin: 20px;
+  background: #4355a982;
+`
+const TrakcerLine = styled.div`
+  height: 5px;
+  background: #4355a9;
 `
