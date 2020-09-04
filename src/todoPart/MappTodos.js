@@ -133,6 +133,7 @@ const MainDiv = styled.div`
   justify-content: space-between;
   border: 2px solid #818cc3;
   margin: 20px 20px;
+  position: relative;
   border-radius: 10px;
   background-color: #fefaf2;
   ${mediaSmall} {
@@ -141,7 +142,8 @@ const MainDiv = styled.div`
 `
 const Menu = styled.div`
   position: absolute;
-  right: 66px;
+  right: -2px;
+  top: -11px;
   z-index: 9999;
   background-color: #ffffff;
   border: 1px solid #ded9d9;
@@ -153,6 +155,7 @@ const Menu = styled.div`
     color: #000000;
     margin: 3px;
     font-size: 15px;
+    padding: 5px;
     ${mediaSmall} {
       font-size: 20px;
     }
