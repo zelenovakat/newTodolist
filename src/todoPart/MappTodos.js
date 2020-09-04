@@ -4,6 +4,7 @@ import Checkbox from "@material-ui/core/Checkbox"
 import IconButton from "@material-ui/core/IconButton"
 import { mediaSmall } from "../helper/screen"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
+// import ProgressBar from "../header/ProgressBar"
 
 const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, updateTodo }) => {
   const [editTodoId, setEditTodoId] = useState(false)
@@ -14,12 +15,14 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
       setEditTodoId("")
     }
   }
+
   const mappedList = todos.map((todo) => {
     return (
       <MainDiv key={todo.id}>
-        <OneTodo className={`todo-finished-${todo.status}`} onClick={() => toggleStatus(todo.id)}>
+        <OneTodo className={`todo-finished-${todo.status}`}>
           <Checkbox
-            checked={todo.status === "true"}
+            onClick={() => toggleStatus(todo.id)}
+            checked={todo.status === true}
             value="status"
             color="primary"
             inputProps={{
@@ -27,7 +30,7 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
             }}
           />
           {editTodoId === todo.id ? (
-            <input
+            <WrapperInputTodo
               type="text"
               value={todo.content}
               onChange={(e) => {
@@ -35,7 +38,7 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
               }}
             />
           ) : (
-            <span>{todo.content}</span>
+            <WrapperSpanTodo>{todo.content}</WrapperSpanTodo>
           )}
         </OneTodo>
 
@@ -57,10 +60,26 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
     )
   })
 
-  return <div>{mappedList}</div>
+  return (
+    <div>
+      <div>{mappedList}</div>
+    </div>
+  )
 }
 
 export default MappTodos
+
+const WrapperInputTodo = styled.input`
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  :focus {
+    outline: none;
+  }
+`
+const WrapperSpanTodo = styled.span`
+  font-size: 17px;
+`
 
 const MenuWrapper = styled.div`
   display: flex;
