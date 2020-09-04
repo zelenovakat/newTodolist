@@ -2,18 +2,32 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import Checkbox from "@material-ui/core/Checkbox"
 import IconButton from "@material-ui/core/IconButton"
-import { mediaSmall } from "../helper/screen"
+import { mediaSmall, mediaXs } from "../helper/screen"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
-// import ProgressBar from "../header/ProgressBar"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 
-const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, updateTodo }) => {
+const MappTodos = ({ todos, toggleStatus, removeTodo, updateTodo }) => {
   const [editTodoId, setEditTodoId] = useState(false)
+  const [openedMenuId, setOpenedMenuId] = useState(false)
 
   const editTodo = (id) => {
     setEditTodoId(id)
+    setOpenedMenuId(false)
     if (editTodoId === id) {
       setEditTodoId("")
     }
+  }
+
+  const toggleMenu = (id) => {
+    setOpenedMenuId(id)
+    if (openedMenuId === id) {
+      setOpenedMenuId("")
+    }
+  }
+
+  const resetInput = () => {
+    setEditTodoId("")
   }
 
   const mappedList = todos.map((todo) => {
@@ -30,13 +44,18 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
             }}
           />
           {editTodoId === todo.id ? (
-            <WrapperInputTodo
-              type="text"
-              value={todo.content}
-              onChange={(e) => {
-                updateTodo(e.target.value, todo)
-              }}
-            />
+            <MainWrapperInput>
+              <WrapperInputTodo
+                type="text"
+                value={todo.content}
+                onChange={(e) => {
+                  updateTodo(e.target.value, todo)
+                }}
+              />
+              <SaveIcon>
+                <FontAwesomeIcon onClick={resetInput} icon={faCheckCircle} />
+              </SaveIcon>
+            </MainWrapperInput>
           ) : (
             <WrapperSpanTodo>{todo.content}</WrapperSpanTodo>
           )}
@@ -68,17 +87,27 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId, 
 }
 
 export default MappTodos
+const MainWrapperInput = styled.div`
+  display: flex;
+`
 
+const SaveIcon = styled.div`
+  svg {
+    margin: 5px;
+  }
+`
 const WrapperInputTodo = styled.input`
   border: none;
   background: transparent;
   font-size: 17px;
+  overflow-wrap: anywhere;
   :focus {
     outline: none;
   }
 `
 const WrapperSpanTodo = styled.span`
   font-size: 17px;
+  overflow-wrap: anywhere;
 `
 
 const MenuWrapper = styled.div`
@@ -92,6 +121,9 @@ const MiddleLine = styled.div`
   margin: 3px 0;
 `
 const OneTodo = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
   svg {
     color: #4355a9;
   }
