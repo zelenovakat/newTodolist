@@ -37,15 +37,15 @@ export default function LinearWithValueLabel({ completedTodosCount, allTodosCoun
 
   return (
     <div className={classes.root}>
+      <Typography variant="body2" color="textSecondary">
+        {`${completedTodosCount} / ${allTodosCount}`} Completed
+      </Typography>
+
       <Box display="flex" alignItems="center">
         <Box width="100%" mr={1}>
           <LinearProgress variant="determinate" value={procentCompleted} />
         </Box>
-        <Box minWidth={45}>
-          <Typography
-            variant="body2"
-            color="textSecondary">{`${completedTodosCount} / ${allTodosCount}`}</Typography>
-        </Box>
+        <Box minWidth={45}></Box>
       </Box>
     </div>
   )
