@@ -142,7 +142,7 @@ const MainDiv = styled.div`
 `
 const Menu = styled.div`
   position: absolute;
-  right: -2px;
+  right: 40px;
   top: -11px;
   z-index: 9999;
   background-color: #ffffff;
