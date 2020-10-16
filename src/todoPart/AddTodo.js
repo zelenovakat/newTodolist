@@ -5,10 +5,10 @@ import styled from "styled-components"
 
 const AddTodo = ({ addTodo }) => {
   const [content, setContent] = useState("")
-  const [showInput, setShowInput] = useState(false)
+  const [isShowInput, setShowInput] = useState(false)
 
-  const onClick = () => {
-    setShowInput(true)
+  const toggleButton = () => {
+    setShowInput(!isShowInput)
   }
 
   const handleChange = (e) => {
@@ -23,9 +23,11 @@ const AddTodo = ({ addTodo }) => {
   }
 
   return (
-    <ButtonAddTodo onClick={onClick}>
-      <FontAwesomeIcon icon={faPlusCircle} />
-      {showInput ? (
+    <MainWrapper>
+      <ButtonAddTodo onClick={toggleButton}>
+        <FontAwesomeIcon icon={faPlusCircle} />
+      </ButtonAddTodo>
+      {isShowInput && (
         <div>
           <form onSubmit={handleSubmit}>
             <h4>New Todo</h4>
@@ -36,28 +38,59 @@ const AddTodo = ({ addTodo }) => {
               placeholder="add todo"></input>
           </form>
         </div>
-      ) : null}
-    </ButtonAddTodo>
+      )}
+    </MainWrapper>
   )
 }
 
 export default AddTodo
 
-const ButtonAddTodo = styled.button`
-  border: none;
-  background: transparent;
+const MainWrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   width: 100%;
+  padding: 0;
+  margin: 10px 20px;
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  input {
+    border: 2px solid #818cc3;
+    border-radius: 10px;
+    background-color: #fefaf2;
+    padding: 12px;
+    font-size: 15px;
+    :focus {
+      outline: none;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  h4 {
+    display: flex;
+    justify-content: center;
+  }
+`
+
+const ButtonAddTodo = styled.button`
+  background: transparent;
+  border: none;
   svg {
     font-size: 50px;
     color: #4355a9;
+    margin-top: 100px;
+  }
+  :hover {
+    background-color: transparent;
+    outline: none;
   }
   :focus {
-    background-color: transparent;
-  }
-  div {
-    width: 100%;
+    outline: none;
   }
 `
