@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
-// import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 const AddTodo = ({ addTodo }) => {
   const [content, setContent] = useState("")
   const [isShowInput, setShowInput] = useState(false)
@@ -49,8 +48,6 @@ const AddTodo = ({ addTodo }) => {
 
 export default AddTodo
 
-// const AddIcon = styled.div``
-
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -77,6 +74,7 @@ const MainWrapper = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
   }
   h4 {
     display: flex;
@@ -90,7 +88,6 @@ const ButtonAddTodo = styled.button`
   svg {
     font-size: 50px;
     color: #4355a9;
-    margin-top: 100px;
   }
   :hover {
     background-color: transparent;

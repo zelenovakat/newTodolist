@@ -23,11 +23,8 @@ const App = () => {
   const completedTodosCount = filteredtodos.length
 
   const updateTodo = (newValue, todo) => {
-    // todo.content = newValue
     const updatedTodo = { ...todo, content: newValue }
     setTodos(updateObjectInArrayById(todos, updatedTodo))
-    console.log("new vlue", newValue)
-    console.log("old todo", todo)
   }
 
   const addTodo = (todo) => {

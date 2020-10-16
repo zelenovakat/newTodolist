@@ -108,18 +108,14 @@ const WrapperInputTodo = styled.input`
   border: none;
   background: transparent;
   font-size: 17px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   :focus {
     outline: none;
   }
 `
 const WrapperSpanTodo = styled.span`
   font-size: 17px;
-  overflow-wrap: anywhere;
-  ${mediaXs} {
-    font-size: 17px;
-    overflow-wrap: anywhere;
-  }
+  overflow-wrap: break-word;
 `
 
 const MenuWrapper = styled.div`
