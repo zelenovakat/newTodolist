@@ -25,6 +25,7 @@ const App = () => {
   const updateTodo = (newValue, todo) => {
     const updatedTodo = { ...todo, content: newValue }
     setTodos(updateObjectInArrayById(todos, updatedTodo))
+
   }
 
   const addTodo = (todo) => {

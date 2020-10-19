@@ -7,6 +7,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import { Content } from "../todoPart/Content"
+
 const MappTodos = ({ todos, toggleStatus, removeTodo, updateTodo }) => {
   const [editTodoId, setEditTodoId] = useState(false)
   const [openedMenuId, setOpenedMenuId] = useState(false)
@@ -81,7 +82,6 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, updateTodo }) => {
             </Menu>
           )}
         </MenuWrapper>
-
         {/* <EnhancedMenu /> */}
       </MainDiv>
     )
@@ -114,7 +114,6 @@ const WrapperInputTodo = styled.input`
   }
 `
 const WrapperSpanTodo = styled.span`
-  font-size: 17px;
   overflow-wrap: break-word;
 `
 
