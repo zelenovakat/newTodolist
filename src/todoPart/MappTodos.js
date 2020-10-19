@@ -1,16 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import Checkbox from "@material-ui/core/Checkbox"
 import IconButton from "@material-ui/core/IconButton"
 
 import MoreVertIcon from "@material-ui/icons/MoreVert"
 
-const MappTodos = ({ todos, toggleStatus, removeTodo }) => {
-  const [isMenuShown, setMenuShown] = useState(false)
-
-  const toggleMenu = () => {
-    setMenuShown(!isMenuShown)
-  }
+const MappTodos = ({ todos, toggleStatus, removeTodo, toggleMenu, openedMenuId }) => {
+  // const toggleMenu = () => {
+  //   setMenuShown(!isMenuShown)
+  // }
 
   const mappedList = todos.map((todo) => {
     return (
@@ -30,10 +28,10 @@ const MappTodos = ({ todos, toggleStatus, removeTodo }) => {
           <span>{todo.content}</span>
         </OneTodo>
         <div>
-          <IconButton onClick={toggleMenu}>
+          <IconButton onClick={() => toggleMenu(todo.id)}>
             <MoreVertIcon />
           </IconButton>
-          {isMenuShown && (
+          {openedMenuId === todo.id && (
             <Menu>
               <button>edit</button>
               <button onClick={() => removeTodo(todo.id)}>remove</button>
