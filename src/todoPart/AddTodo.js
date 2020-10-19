@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons"
-// import { faTimes } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
 
 const AddTodo = ({ addTodo }) => {
@@ -32,7 +31,6 @@ const AddTodo = ({ addTodo }) => {
         <div>
           <form onSubmit={handleSubmit}>
             <h4>New Todo</h4>
-            {/* <FontAwesomeIcon icon={faTimes} /> */}
             <input
               type="text"
               onChange={handleChange}

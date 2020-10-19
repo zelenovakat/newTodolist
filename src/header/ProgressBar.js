@@ -45,7 +45,6 @@ export default function LinearWithValueLabel({ completedTodosCount, allTodosCoun
         <Box width="100%" mr={1}>
           <LinearProgress variant="determinate" value={procentCompleted} />
         </Box>
-        <Box minWidth={45}></Box>
       </Box>
     </div>
   )

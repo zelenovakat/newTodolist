@@ -1,11 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import TopPart from "../src/header/TopPart"
 import styled from "styled-components"
 import MappTodos from "../src/todoPart/MappTodos"
 import { useLocalStorage } from "../src/helper/useLocalStorage"
 import { updateObjectInArrayById } from "../src/helper/updateObjectInArrayById"
 import AddTodo from "../src/todoPart/AddTodo"
-// import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons"
 import ProgressBar from "../src/header/ProgressBar"
 const defaultTodos = [
   { id: 1, content: "morning walk", status: true },
@@ -15,7 +14,6 @@ const defaultTodos = [
 
 const App = () => {
   const [todos, setTodos] = useLocalStorage("todos", defaultTodos)
-  const [openedMenuId, setOpenedMenuId] = useState(false)
 
   const filteredtodos = todos.filter((item) => item.status)
 
@@ -48,13 +46,6 @@ const App = () => {
     setTodos(todosWithoutOne)
   }
 
-  const toggleMenu = (id) => {
-    setOpenedMenuId(id)
-    if (openedMenuId === id) {
-      setOpenedMenuId("")
-    }
-  }
-
   return (
     <MainWrapper>
       <header>
@@ -64,10 +55,8 @@ const App = () => {
         </ProgressWrapper>
         <MappTodos
           todos={todos}
-          openedMenuId={openedMenuId}
           removeTodo={removeTodo}
           toggleStatus={toggleStatus}
-          toggleMenu={toggleMenu}
           updateTodo={updateTodo}
         />
       </header>
