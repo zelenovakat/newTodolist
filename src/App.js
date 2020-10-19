@@ -6,6 +6,7 @@ import { useLocalStorage } from "../src/helper/useLocalStorage"
 import { updateObjectInArrayById } from "../src/helper/updateObjectInArrayById"
 import AddTodo from "../src/todoPart/AddTodo"
 import ProgressBar from "../src/header/ProgressBar"
+
 const defaultTodos = [
   { id: 1, content: "morning walk", status: true },
   { id: 2, content: "meeting with John", status: false },
@@ -22,11 +23,9 @@ const App = () => {
   const completedTodosCount = filteredtodos.length
 
   const updateTodo = (newValue, todo) => {
-    // todo.content = newValue
     const updatedTodo = { ...todo, content: newValue }
     setTodos(updateObjectInArrayById(todos, updatedTodo))
-    console.log("new vlue", newValue)
-    console.log("old todo", todo)
+
   }
 
   const addTodo = (todo) => {

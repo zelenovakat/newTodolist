@@ -9,6 +9,11 @@ const AddTodo = ({ addTodo }) => {
 
   const toggleButton = () => {
     setShowInput(!isShowInput)
+
+    if (content.length) {
+      addTodo({ content })
+      setContent("")
+    }
   }
 
   const handleChange = (e) => {
@@ -71,6 +76,7 @@ const MainWrapper = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
   }
   h4 {
     display: flex;
@@ -84,7 +90,6 @@ const ButtonAddTodo = styled.button`
   svg {
     font-size: 50px;
     color: #4355a9;
-    margin-top: 100px;
   }
   :hover {
     background-color: transparent;

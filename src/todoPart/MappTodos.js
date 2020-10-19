@@ -6,6 +6,7 @@ import { mediaSmall, mediaXs } from "../helper/screen"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
+import { Content } from "../todoPart/Content"
 
 const MappTodos = ({ todos, toggleStatus, removeTodo, updateTodo }) => {
   const [editTodoId, setEditTodoId] = useState(false)
@@ -72,9 +73,16 @@ const MappTodos = ({ todos, toggleStatus, removeTodo, updateTodo }) => {
               </button>
               <MiddleLine></MiddleLine>
               <button onClick={() => removeTodo(todo.id)}>Remove</button>
+              {openedMenuId && (
+                <Content
+                  onClose={() => {
+                    setOpenedMenuId(false)
+                  }}></Content>
+              )}
             </Menu>
           )}
         </MenuWrapper>
+        {/* <EnhancedMenu /> */}
       </MainDiv>
     )
   })
@@ -100,14 +108,13 @@ const WrapperInputTodo = styled.input`
   border: none;
   background: transparent;
   font-size: 17px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   :focus {
     outline: none;
   }
 `
 const WrapperSpanTodo = styled.span`
-  font-size: 17px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 `
 
 const MenuWrapper = styled.div`
